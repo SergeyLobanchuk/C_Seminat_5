@@ -103,18 +103,61 @@
 
 //4; массив [6, 7, 19, 345, 3] -> нет
 
-int [] CreatPlayerArray (int size) //заполнение массива
+// int [] CreatPlayerArray (int size) //заполнение массива
+// {
+//     int [] newArray = new int [size]; // инициализация массива
+//     for (int i = 0; i < size; i++)
+//     {
+//         //Заполняем массив от пользователя
+//         Console.WriteLine($"Inpit {i+1} number ");
+//         newArray[i] = Convert.ToInt32(Console.ReadLine());
+//     }
+//     return newArray; //вернуть массив    
+// }
+
+
+// void ShowArray (int [] arr) // Вывести наш массим из метода CreatRandomArray
+// {
+    
+//     Console.Write("Массив -> ");
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         Console.Write(arr[i]+ " ");
+//     }
+//     Console.WriteLine();
+// }
+
+
+// bool findNumber(int number, int[] arr)
+// {
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         if (number == arr[i]) return true;
+//     }
+//     return false; 
+// }
+
+// Console.WriteLine("Input size ");
+// int size = Convert.ToInt32(Console.ReadLine());
+// int [] MyArray = CreatPlayerArray(size);
+// ShowArray(MyArray);
+// Console.WriteLine("Input your number ");
+// int number = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine (findNumber(number, MyArray));
+
+//Задача 4. Задайте одномерный массив из 123 случайных чисел. 
+// Найдите количество элементов массива, 
+//значения которых лежат в отрезке [10,99].
+
+int [] CreatRandomArray (int size) //заполнение массива
 {
     int [] newArray = new int [size]; // инициализация массива
     for (int i = 0; i < size; i++)
     {
-        //Заполняем массив от пользователя
-        Console.WriteLine($"Inpit {i+1} number ");
-        newArray[i] = Convert.ToInt32(Console.ReadLine());
+    newArray[i] = new Random().Next(1, 1001); //Заполняем массив, +1 т.к. последнее число не входит в диапозон [1,1000)
     }
     return newArray; //вернуть массив    
 }
-
 
 void ShowArray (int [] arr) // Вывести наш массим из метода CreatRandomArray
 {
@@ -127,25 +170,19 @@ void ShowArray (int [] arr) // Вывести наш массим из мето�
     Console.WriteLine();
 }
 
-
-bool findNumber(int number, int[] arr)
+void Find(int []array)
 {
-    for (int i = 0; i < arr.Length; i++)
+    int count = 0;
+    for (int i = 0; i < array.Length; i++)
     {
-        if (number == arr[i]) return true;
+        if (array[i] >= 10 && array[i]<=99) count += 1;
     }
-    return false; 
+    Console.WriteLine($"Кол-во чисел {count}");
 }
+
 
 Console.WriteLine("Input size ");
 int size = Convert.ToInt32(Console.ReadLine());
-int [] MyArray = CreatPlayerArray(size);
+int [] MyArray = CreatRandomArray(size);
 ShowArray(MyArray);
-Console.WriteLine("Input your number ");
-int number = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine (findNumber(number, MyArray));
-
-//Задача 4. Задайте одномерный массив из 123 случайных чисел. 
-// Найдите количество элементов массива, 
-//значения которых лежат в отрезке [10,99].
-
+Find(MyArray);
